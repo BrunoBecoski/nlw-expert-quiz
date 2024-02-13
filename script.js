@@ -94,6 +94,13 @@ const questions = [
 const quiz = document.querySelector('#quiz');
 const template = document.querySelector('template');
 
+const corrects = new Set();
+const totalQuestions = questions.length;
+
+const showTotal = document.querySelector('#hits span');
+
+showTotal.textContent = corrects.size + ' de ' + totalQuestions;
+
 for(const item of questions) {
   const quizItem = template.content.cloneNode(true);
 
@@ -101,8 +108,21 @@ for(const item of questions) {
   
   for(const answer of item.answers) {
     const dt = quizItem.querySelector('dl dt').cloneNode(true);
-
+    
     dt.querySelector('span').textContent = answer;
+    dt.querySelector('input').setAttribute('name', 'question-' + questions.indexOf(item));
+    dt.querySelector('input').value = item.answers.indexOf(answer);
+    dt.querySelector('input').onchange = (event) => {
+      const isCorrect = event.target.value == item.correct;
+      
+      corrects.delete(item);
+
+      if (isCorrect) {
+        corrects.add(item);
+      }
+
+      showTotal.textContent = corrects.size + ' de ' + totalQuestions; 
+    };
 
     quizItem.querySelector('dl').appendChild(dt);
   }
