@@ -11,25 +11,28 @@
     <title>expert quiz</title>
   </head>
 
-  <body id="root">
-    <main>
+  <body>
+    <header>
+      <img src="./assets/logo-nlw-expert.svg" alt="Logo NLW" />
       <h1>Teste seus conhecimentos</h1>
+    </header>
 
-      <div id="quiz">
-        <template>
-          <div class="quiz-item">
-            <h3>Pergunta 1</h3>
-            <dl>
-              <dt>
-                <label>
-                  <input type="radio" name="item" value="0" />
-                  <span>Resposta A</span>
-                </label>
-              </dt>
-            </dl>
-          </div>
-        </template>
-      </div>
+    <main>
+      <div id="quiz"></div>
+      
+      <template>
+        <div class="quiz-item">
+          <h3>Pergunta 1</h3>
+          <dl>
+            <dt>
+              <label>
+                <input type="radio" name="item" value="0" />
+                <span>Resposta A</span>
+              </label>
+            </dt>
+          </dl>
+        </div>
+      </template>
 
       <div id="hits">
         <strong>Acertos</strong>
